@@ -188,14 +188,6 @@ Run the tests using:
 npm test
 ```
 
-## 🧪 Run Tests
-
-Run the project's automated tests using:
-
-```bash
-npm test
-```
-
 ## 🗄️ Database
 
 Internship and application data are managed using SQLite. The seed script initializes the sample internship records.
