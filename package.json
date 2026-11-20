@@ -1,0 +1,23 @@
+{
+  "name": "internship-board",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Accessible, responsive internship board built with Vanilla JS, Express and SQLite.",
+  "main": "backend/src/server.js",
+  "scripts": {
+    "start": "node backend/src/server.js",
+    "dev": "node --watch backend/src/server.js",
+    "seed": "node backend/src/database/seed.js",
+    "test": "node --test backend/tests/*.test.js"
+  },
+  "engines": {
+    "node": "22.x"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.8.1",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^8.7.5",
+    "helmet": "^8.0.0"
+  }
+}

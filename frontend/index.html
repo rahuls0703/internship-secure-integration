@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore student internships and apply to opportunities.">
+  <title>Internship Board — Find your next opportunity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/api.js" defer></script>
+  <script src="/js/validation.js" defer></script>
+  <script src="/js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="/" aria-label="Internship Board home"><span class="brand-mark">IB</span><span>internship<span class="brand-light">board</span></span></a>
+      <nav aria-label="Main navigation"><a href="#opportunities" class="nav-link">Explore</a><a href="#about" class="nav-link">About</a><a href="#opportunities" class="nav-cta">Find internships <span aria-hidden="true">↗</span></a></nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="pulse"></span> YOUR NEXT CHAPTER STARTS HERE</p>
+          <h1>Small steps.<br><span>Big careers.</span></h1>
+          <p class="hero-text">Discover meaningful internships, build real-world skills, and find the team where you can grow.</p>
+          <a class="hero-button" href="#opportunities">Explore opportunities <span aria-hidden="true">↓</span></a>
+          <div class="hero-proof"><div class="avatar-stack" aria-hidden="true"><span>R</span><span>A</span><span>S</span></div><span>Made for curious students<br><strong>ready to make an impact</strong></span></div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="hero-card card-top"><span class="mini-icon purple">✦</span><div><strong>Find your fit</strong><small>Skills meet opportunity</small></div><span class="check">✓</span></div>
+          <div class="hero-illustration"><div class="sun"></div><div class="plant plant-left">✳</div><div class="person"><div class="head"></div><div class="body"></div><div class="laptop">⌘</div></div><div class="sparkle s1">✦</div><div class="sparkle s2">✧</div></div>
+          <div class="hero-card card-bottom"><span class="mini-icon green">↗</span><div><strong>Growth starts now</strong><small>One application at a time</small></div></div>
+          <div class="floating-tag">✨ Internship season</div>
+        </div>
+      </div>
+      <div class="hero-wave"></div>
+    </section>
+
+    <section class="stats-strip" aria-label="Board highlights"><div class="container stats"><div><strong>Curated</strong><span>student-first roles</span></div><div><strong>Flexible</strong><span>remote & on-site</span></div><div><strong>Career-ready</strong><span>skills that matter</span></div></div></section>
+
+    <section class="opportunities section" id="opportunities">
+      <div class="container">
+        <div class="section-heading"><div><p class="eyebrow">THE OPPORTUNITY BOARD</p><h2>Find your <span>next opportunity.</span></h2><p class="section-sub">A role that fits your interests is closer than you think.</p></div><div class="live-badge"><span></span> Live listings</div></div>
+        <div class="toolbar">
+          <label class="search-box"><span aria-hidden="true">⌕</span><span class="sr-only">Search internships</span><input id="searchInput" type="search" placeholder="Search role, skill or company…" autocomplete="off"><kbd>⌘ K</kbd></label>
+          <label class="filter-label">Domain<select id="domainFilter"><option value="">All domains</option></select></label>
+          <label class="filter-label">Work mode<select id="modeFilter"><option value="">All work modes</option></select></label>
+          <button id="clearFilters" class="clear-button" type="button">Reset filters</button>
+        </div>
+        <div class="results-line"><p id="resultCount" aria-live="polite">Loading opportunities…</p><span>Sorted alphabetically</span></div>
+        <div id="internshipGrid" class="internship-grid" aria-busy="true"></div>
+        <div id="listMessage" class="list-message" role="status" hidden></div>
+        <div class="load-more-wrap"><button id="loadMore" class="load-more" type="button" hidden>Load more opportunities <span aria-hidden="true">↓</span></button></div>
+      </div>
+    </section>
+
+    <section class="why-section" id="about"><div class="container why-grid"><div><p class="eyebrow">YOUR JOURNEY, YOUR WAY</p><h2>Experience is the<br><span>best classroom.</span></h2></div><p>Every great career begins with a chance. Explore roles, learn from teams, and turn what you know into what you can do. Your next step doesn't need to be perfect—it just needs to begin.</p></div></section>
+  </main>
+
+  <footer class="footer"><div class="container footer-inner"><a class="brand footer-brand" href="/"><span class="brand-mark">IB</span><span>internship<span class="brand-light">board</span></span></a><p>Built for the next generation of builders. <span>© <span id="year"></span> Internship Board</span></p><a href="#main" class="back-top">Back to top ↑</a></div></footer>
+
+  <dialog id="detailsDialog" class="dialog" aria-labelledby="detailsTitle"><div id="detailsContent"></div></dialog>
+  <dialog id="applicationDialog" class="dialog form-dialog" aria-labelledby="applicationTitle">
+    <div class="dialog-head"><div><p class="eyebrow">TAKE THE NEXT STEP</p><h2 id="applicationTitle">Apply for this role</h2><p id="applicationRole" class="muted"></p></div><button class="icon-close" type="button" data-close aria-label="Close application form">×</button></div>
+    <form id="applicationForm" novalidate>
+      <input type="hidden" id="applicationInternshipId" name="internshipId">
+      <div class="form-grid"><label>Full name <span>*</span><input name="fullName" required minlength="2" maxlength="80" autocomplete="name"><small class="field-error" data-error="fullName"></small></label>
+      <label>Email address <span>*</span><input name="email" type="email" required maxlength="254" autocomplete="email"><small class="field-error" data-error="email"></small></label>
+      <label>Phone <small>(optional)</small><input name="phone" type="tel" maxlength="25" autocomplete="tel"><small class="field-error" data-error="phone"></small></label>
+      <label>Resume link <small>(optional)</small><input name="resumeUrl" type="url" placeholder="https://…" maxlength="500"><small class="field-error" data-error="resumeUrl"></small></label></div>
+      <label class="full-label">Cover letter <small>(optional)</small><textarea name="coverLetter" rows="4" maxlength="2000" placeholder="Tell us why this opportunity excites you…"></textarea><small class="field-error" data-error="coverLetter"></small></label>
+      <p class="form-note">Fields marked * are required. Your details are used only to process this application.</p>
+      <div id="formMessage" role="status" class="form-message" hidden></div>
+      <button class="submit-button" type="submit">Submit application <span aria-hidden="true">↗</span></button>
+    </form>
+  </dialog>
+</body>
+</html>
