@@ -10,10 +10,6 @@ A responsive full-stack internship portal where students can explore internship 
 
 <div align="center">
 
-## 🚀 Live Demo
-
-### [🌐 Visit Internship Board](https://internship-board-d0r7.onrender.com)
-
 </div>
 
 ![Node.js](https://img.shields.io/badge/Node.js-22%2B-339933?logo=node.js&logoColor=white)
@@ -82,8 +78,8 @@ The application includes sample internship records and supports searching, filte
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/rahuls0703/internship-board.git
-cd internship-board
+git clone https://github.com/rahuls0703/internship-secure-integration.git
+cd internship-secure-integration
 ```
 
 ### 2. Install dependencies
@@ -162,6 +158,36 @@ The backend exposes REST endpoints for internship listings and applications.
 
 For request parameters, payload examples, and response formats, see **[API Documentation](docs/API.md)**.
 
+## 🔐 Security Implementation
+
+The application implements multiple security measures to protect API endpoints and application data.
+
+- **Helmet:** Configures secure HTTP headers to improve application security.
+- **Rate Limiting:** Restricts excessive application submission requests using `express-rate-limit` (10 requests per 15 minutes).
+- **Parameterized SQL Queries:** Uses prepared statements to protect database operations against SQL injection.
+- **Server-side Validation:** Validates application data before processing submissions.
+- **Client-side Validation:** Provides immediate feedback for invalid form inputs.
+- **Request Size Limits:** Restricts incoming JSON and URL-encoded request payloads to 20 KB.
+
+## 🧪 Automated Testing
+
+Automated API tests verify:
+
+- Internship listing and filtering.
+- Internship detail retrieval.
+- Invalid application rejection.
+- Missing required field rejection.
+- Successful application submission.
+- Duplicate application prevention.
+- Helmet security headers.
+- API rate-limit enforcement.
+
+Run the tests using:
+
+```bash
+npm test
+```
+
 ## 🧪 Run Tests
 
 Run the project's automated tests using:
@@ -198,8 +224,7 @@ B.E. Computer Science and Engineering
 Chennai Institute of Technology
 
 - GitHub: [@rahuls0703](https://github.com/rahuls0703)
-- Project Repository: [internship-board](https://github.com/rahuls0703/internship-board)
-
+- Project Repository: [internship-secure-integration](https://github.com/rahuls0703/internship-secure-integration)
 ## 🤝 Acknowledgements
 
 This project was developed as part of a full-stack web development internship task. The internship listing dataset contains sample/fictional records for demonstration purposes.
