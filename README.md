@@ -1,18 +1,22 @@
-\<div align="center">
+<h1 align="center">🎓 Internship Board</h1>
 
-# 🎓 Internship Board
+<h3 align="center">
+  Discover opportunities. Explore internships. Apply with confidence.
+</h3>
 
-### Discover opportunities. Explore internships. Apply with confidence.
+<p align="center">
+  A responsive full-stack internship portal where students can explore
+  internship listings, filter opportunities, view details, and submit
+  applications through a validated application form.
+</p>
 
-A responsive full-stack internship portal where students can explore internship listings, filter opportunities, view details, and submit applications through a validated application form.
-
-
-
-
-\
-
-
-\</div>
+<p align="center">
+  <img src="https://img.shields.io/badge/Node.js-22%2B-339933?logo=node.js&logoColor=white" alt="Node.js">
+  <img src="https://img.shields.io/badge/Express.js-Backend-black?logo=express" alt="Express.js">
+  <img src="https://img.shields.io/badge/Database-SQLite-003B57?logo=sqlite&logoColor=white" alt="SQLite">
+  <img src="https://img.shields.io/badge/Frontend-Vanilla_JavaScript-F7DF1E?logo=javascript&logoColor=black" alt="JavaScript">
+  <img src="https://img.shields.io/badge/License-MIT-blue" alt="MIT License">
+</p>
 
 ---
 
