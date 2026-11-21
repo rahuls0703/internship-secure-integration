@@ -1,4 +1,5 @@
 <h1 align="center">🎓 Internship Board</h1>
+\<div align="center">
 
 <h3 align="center">
   Discover opportunities. Explore internships. Apply with confidence.
@@ -18,6 +19,7 @@
   <img src="https://img.shields.io/badge/License-MIT-blue" alt="MIT License">
 </p>
 
+A responsive full-stack internship portal where students can explore internship listings, filter opportunities, view details, and submit applications through a validated application form.
 ---
 
 ## 📌 Overview
@@ -59,16 +61,18 @@ The application includes sample internship records and supports searching, filte
 ## 🖥️ Application Screenshots
 
 ### Homepage
-![Homepage](docs/images/homepage.png)
+![Internship Board Homepage](docs/images/homepage.png)
 
 ### Internship Filters
-![Filters](docs/images/filters.png)
 
+![Internship Board Filter Section](docs/images/filters.png)
 ### Internship Details
-![Internship Details](docs/images/internship-details.png)
+
+![Internship Details]\(docs/images/internship-details.png)
 
 ### Application Form
-![Application Form](docs/images/application-form.png)
+
+![Application Form]\(docs/images/application-form.png)
 
 ## 🚀 Getting Started
 
