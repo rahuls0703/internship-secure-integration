@@ -52,23 +52,19 @@ The application includes sample internship records and supports searching, filte
 | Testing     | Node.js built-in test runner                          |
 | Development | npm, Git, GitHub                                      |
 
-## 🖥️ Screenshots
+## 🖥️ Application Screenshots
 
 ### Homepage
+![Homepage](docs/images/homepage.png)
 
-![Internship Board Homepage]\(docs/images/homepage.png)
-
-### Filters
-
-![Internship Board Filter Section]\(docs/images/filters.png)
+### Internship Filters
+![Filters](docs/images/filters.png)
 
 ### Internship Details
-
-![Internship Details]\(docs/images/internship-details.png)
+![Internship Details](docs/images/internship-details.png)
 
 ### Application Form
-
-![Application Form]\(docs/images/application-form.png)
+![Application Form](docs/images/application-form.png)
 
 ## 🚀 Getting Started
 
