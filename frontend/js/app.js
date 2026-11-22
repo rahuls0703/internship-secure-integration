@@ -1,4 +1,5 @@
 /* global apiRequest, validateApplication */
+let lastFocusedElement = null;
 const grid = document.querySelector("#internshipGrid");
 const listMessage = document.querySelector("#listMessage");
 const resultCount = document.querySelector("#resultCount");
@@ -62,8 +63,16 @@ async function loadInternships({ append = false } = {}) {
   } finally { grid.setAttribute("aria-busy", "false"); }
 }
 async function openDetails(id) {
-  detailsContent.innerHTML = '<div class="dialog-content"><p>Loading details…</p></div>';
+  lastFocusedElement = document.activeElement;
+
+  detailsContent.innerHTML = `
+    <div class="dialog-content">
+      <h2 id="detailsTitle">Loading internship details…</h2>
+    </div>
+  `;
+
   detailsDialog.showModal();
+
   try {
     const { data:item } = await apiRequest(`/internships/${encodeURIComponent(id)}`);
     detailsContent.innerHTML = `<div class="dialog-content"><div class="dialog-head" style="padding:0"><div><p class="eyebrow">${escapeHTML(item.domain)}</p><h2 id="detailsTitle">${escapeHTML(item.title)}</h2><p class="detail-company">${escapeHTML(item.company)} · ${escapeHTML(item.id)}</p></div><button class="icon-close" data-close type="button" aria-label="Close details">×</button></div>
@@ -87,8 +96,30 @@ function openApplication(id, title) {
   applicationForm.querySelector("[name=fullName]").focus();
 }
 function showFieldErrors(errors) {
-  for (const el of applicationForm.querySelectorAll("[data-error]")) el.textContent = errors[el.dataset.error] || "";
+  for (const el of applicationForm.querySelectorAll("[data-error]")) {
+    const fieldName = el.dataset.error;
+    const input = applicationForm.querySelector(
+      `[name="${fieldName}"]`
+    );
+
+    const message = errors[fieldName] || "";
+
+    el.textContent = message;
+
+    if (input) {
+      if (message) {
+        input.setAttribute("aria-invalid", "true");
+      } else {
+        input.removeAttribute("aria-invalid");
+      }
+    }
+  }
 }
+detailsDialog.addEventListener("close", () => {
+  if (!applicationDialog.open) {
+    lastFocusedElement?.focus();
+  }
+});
 grid.addEventListener("click", event => {
   const button = event.target.closest("[data-details]");
   if (button) openDetails(button.dataset.details);
@@ -109,7 +140,22 @@ applicationForm.addEventListener("submit", async event => {
   event.preventDefault(); showFieldErrors({});
   const formData = new FormData(applicationForm);
   const errors = validateApplication(formData);
-  if (Object.keys(errors).length) { showFieldErrors(errors); formMessage.textContent="Please correct the highlighted fields.";formMessage.className="form-message error";formMessage.hidden=false;return; }
+if (Object.keys(errors).length) {
+  showFieldErrors(errors);
+
+  formMessage.textContent = "Please correct the highlighted fields.";
+  formMessage.className = "form-message error";
+  formMessage.setAttribute("role", "alert");
+  formMessage.hidden = false;
+
+  const firstInvalidField = applicationForm.querySelector(
+    '[aria-invalid="true"]'
+  );
+
+  firstInvalidField?.focus();
+
+  return;
+}
   const submit = applicationForm.querySelector(".submit-button");submit.disabled=true;submit.textContent="Submitting…";
   try {
     const payload = Object.fromEntries(formData.entries());

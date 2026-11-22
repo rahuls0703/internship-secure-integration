@@ -1,5 +1,5 @@
 const emailDomainTypos = {
-  "gmal.co": "gmail.com", "gmal.com": "gmail.com", "gmial.com": "gmail.com",
+  "gmal.co": "gmail.com", "gmal.com": "gmail.com", "gmial.com": "gmail.com","gmal.cm": "gmail.com",
   "gmai.com": "gmail.com", "gmail.co": "gmail.com", "gmail.con": "gmail.com",
   "yaho.com": "yahoo.com", "yahoo.co": "yahoo.com", "yahho.com": "yahoo.com",
   "outlok.com": "outlook.com", "outloo.com": "outlook.com",
